@@ -1,5 +1,5 @@
-function MyButton(props) {
+function PropsButton(props) {
     return <button style={{backgroundColor: props.color}}>{props.name}</button>
 }
 
-export default MyButton;
+export default PropsButton;

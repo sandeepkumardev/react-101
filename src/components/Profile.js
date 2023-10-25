@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Hola = () => {
+const Profile = () => {
   const [user, setUser] = useState(false);
 
   const userHandle = () => {
@@ -15,4 +15,4 @@ const Hola = () => {
   );
 };
 
-export default Hola;
+export default Profile;

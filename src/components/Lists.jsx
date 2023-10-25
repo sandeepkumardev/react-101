@@ -4,15 +4,15 @@ const File = () => {
   const data = [
     {
       name: "first",
-      icon: "icon",
+      icon: "icon 1",
     },
     {
       name: "sec",
-      icon: "icon",
+      icon: "icon 2",
     },
     {
       name: "third",
-      icon: "icon",
+      icon: "icon 3",
     },
   ];
 
