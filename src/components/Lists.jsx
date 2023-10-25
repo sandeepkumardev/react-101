@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const File = () => {
-  const data = [
-    {
-      name: "first",
-      icon: "icon 1",
-    },
-    {
-      name: "sec",
-      icon: "icon 2",
-    },
-    {
-      name: "third",
-      icon: "icon 3",
-    },
-  ];
+const [result, setResult] = useState([]);
+
+  useEffect(() => {
+    fetch("./MOCK_DATA.json")
+    .then(data => data.json())
+    .then(data => {
+      setResult(data);
+    })
+    .catch(err => console.log("error -> ", err))
+  }, [])
 
   return (
     <div>
-      {data.map((item, i) => (
-        <div key={i}>
+      {result.map((item, i) => (
+        <div key={i} style={{border: "1px solid black", margin: "20px"}}>
           <p>{item.name}</p>
-          <p>{item.icon}</p>
+          <p>{item.email}</p>
+          <p>{item.gender}</p>
         </div>
       ))}
     </div>
