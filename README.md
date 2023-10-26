@@ -157,6 +157,36 @@ class MyComponent extends React.Component {
 }
 ```
 
+```jsx
+class Counter extends React.Component {
+  // Constructor to initialize state and bind methods
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+    this.incrementCount = this.incrementCount.bind(this);
+  }
+
+  // Custom method to update the state
+  incrementCount() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Class-based Component</h1>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.incrementCount}>Increment</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
 ### React 16.3 and Beyond:
 
 With the introduction of React Hooks, you can manage state and side effects more cleanly and uniformly. Some equivalent Hooks for the above lifecycle methods are:

@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
-import Lists from "./components/Lists";
+import Form from "./components/Form";
 
 const App = () => {
   return (
     <div className="App">
-      <Lists />
+      <Form />
     </div>
   );
 };
