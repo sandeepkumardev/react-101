@@ -1,31 +1,26 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
+import Display from "./components/Store/Display";
+import Counter from "./components/Store/Counter";
+
+// global store
+export const AppStore = createContext();
 
 const App = () => {
   const [count, setCount] = useState(0);
 
-  return (
-    <div className="App">
-      <Display count={count} />
-      <Counter count={count} setCount={setCount} />
-    </div>
-  );
-};
-
-const Counter = ({ setCount, count }) => {
   const inc = () => {
     setCount(count + 1);
   };
+
   return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={inc}>+</button>
+    <div className="App">
+      <AppStore.Provider value={{ count, inc }}>
+        <Counter />
+        <Display />
+      </AppStore.Provider>
     </div>
   );
-};
-
-const Display = (props) => {
-  return <div>{props.count}</div>;
 };
 
 export default App;

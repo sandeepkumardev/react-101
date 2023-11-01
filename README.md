@@ -251,7 +251,7 @@ Prop drilling, also known as "prop passing," occurs when you need to pass data t
 
 ## 14. State Management:
 
-State management in React involves handling and sharing data efficiently to maintain the application's state. Depending on the complexity of your application and the data sharing requirements, you can use `local component state`, `lift state up`, or employ `global state management` solutions like the Context API, Redux, or MobX. The choice of approach depends on the specific needs and scale of your application.
+State management in React involves handling and sharing data efficiently to maintain the application's state. Depending on the complexity of your application and the data sharing requirements, you can use `local component state`, `lift state up`, or employ `global state management` solutions like the `Context API`, `Redux`, or `MobX`. The choice of approach depends on the specific needs and scale of your application.
 
 ### Lifting State Up:
 
