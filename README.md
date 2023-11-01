@@ -244,3 +244,100 @@ Greeting.propTypes = {
   name: PropTypes.string.isRequired,
 };
 ```
+
+## 13. Prop drilling:
+
+Prop drilling, also known as "prop passing," occurs when you need to pass data through multiple levels of nested components in a React application.
+
+## 14. State Management:
+
+State management in React involves handling and sharing data efficiently to maintain the application's state. Depending on the complexity of your application and the data sharing requirements, you can use `local component state`, `lift state up`, or employ `global state management` solutions like the Context API, Redux, or MobX. The choice of approach depends on the specific needs and scale of your application.
+
+### Lifting State Up:
+
+It's a way to share data between components that don't have a direct parent-child relationship.
+
+```jsx
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <Counter count={count} setCount={setCount} />
+      <Display count={count} />
+    </div>
+  );
+}
+
+function Counter({ count, setCount }) {
+  const increment = () => setCount(count + 1);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+
+function Display({ count }) {
+  return <p>Display Count: {count}</p>;
+}
+```
+
+### Context API -
+
+Managing global state using the React Context API. In this example, we'll create a simple global theme switcher using context to share the current theme throughout the application. The theme can be "light" or "dark," and components can consume and change the theme using the context.
+
+```jsx
+import React, { createContext, useContext, useState } from "react";
+import "./App.css";
+
+// Create a new context for the theme.
+const ThemeContext = createContext();
+
+function App() {
+  const [theme, setTheme] = useState("light"); // Initial theme is 'light'.
+
+  const toggleTheme = () => {
+    // Toggle the theme between 'light' and 'dark'.
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={`App ${theme}`}>
+        <Header />
+        <Content />
+      </div>
+    </ThemeContext.Provider>
+  );
+}
+
+function Header() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return (
+    <header>
+      <h1>Theme Switcher</h1>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <p>Current Theme: {theme}</p>
+    </header>
+  );
+}
+
+function Content() {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <main>
+      <section>
+        <h2>Content Section</h2>
+        <p>This is the content of the application.</p>
+      </section>
+    </main>
+  );
+}
+
+export default App;
+```
